@@ -1,7 +1,7 @@
 const { format } = require('../payslipFormatter');
 
 describe('payslipFormatter', () => {
-  it('will should retrun correct payslip', () => {
+  it('should retrun correct payslip', () => {
     const calculation = {
       grossMonthlyIncome: '1666.67',
       monthlyIncomeTax: '0.00',
