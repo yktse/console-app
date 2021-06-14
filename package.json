@@ -1,0 +1,25 @@
+{
+  "name": "employee-monthly-payslip",
+  "version": "1.0.0",
+  "description": "console application for employee payslip",
+  "scripts": {
+    "start": "node src/index.js",
+    "test:watch": "jest --watch",
+    "test": "jest --verbose --coverage"
+  },
+  "bin": {
+    "xf": "./src/index.js"
+  },
+  "author": "Kimberley",
+  "license": "MIT",
+  "dependencies": {
+    "big.js": "^6.1.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "jest": "^27.0.4"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
