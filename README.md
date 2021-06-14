@@ -24,7 +24,7 @@ This is a simple program to calculate employees' gross monthly income, monthly i
 - The program is broken down into small modules so they are easier to test and maintain.
 - Have chosen json to store the tax bracket data. This will enhance our maintainability. When there is a change in tax table, we only need to modify the Json file.
 
-#### Solution
+### Solution
 
 - Calculation folder : calculation code, taxTable.json & tests
 - Formatter folder : payslip format code & tests
