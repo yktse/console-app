@@ -1,4 +1,4 @@
-const payslipFormatter = (name, payslip) => {
+const format = (name, payslip) => {
   const printPayslip =
     `Monthly Payslip for : '${name}'\n` +
     `Gross Monthly Income : $${payslip.grossMonthlyIncome}\n` +
@@ -8,4 +8,4 @@ const payslipFormatter = (name, payslip) => {
   return printPayslip;
 };
 
-module.exports = { payslipFormatter };
+module.exports = { format };

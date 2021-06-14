@@ -1,14 +1,9 @@
 #!/usr/bin/env node
 
-const { payslipFormatter } = require('./formatter/payslipFormatter');
+const { format } = require('./formatter/payslipFormatter');
 const { validate } = require('./validation/validator');
 
-const TaxCalculator = require('./calculation/taxCalculator');
-const taxTable = require('./calculation/taxTable.json');
-const PayslipCalculator = require('./calculation/payslipCalculator');
-
-const taxCalculator = new TaxCalculator(taxTable);
-const payslipCalculator = new PayslipCalculator(taxCalculator);
+const { calculatePayslip } = require('./calculation/payslipCalculator');
 
 try {
   const args = process.argv.slice(2);
@@ -21,8 +16,8 @@ try {
   const [name, salary] = args;
   validate(name, salary);
 
-  const payslip = payslipCalculator.calculatePayslip(salary);
-  const result = payslipFormatter(name, payslip);
+  const payslip = calculatePayslip(salary);
+  const result = format(name, payslip);
   console.log(result);
 } catch (error) {
   console.log(error.message);

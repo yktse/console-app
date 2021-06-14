@@ -1,6 +1,5 @@
-const taxTable = require('../taxTable.json');
 const Big = require('big.js');
-const TaxCalculator = require('../taxCalculator');
+const { calculateTax } = require('../taxCalculator');
 
 describe('TaxCalculator', () => {
   test.each([
@@ -9,8 +8,7 @@ describe('TaxCalculator', () => {
     { salary: 40001, expectedTax: 2000.2 },
     { salary: 60000, expectedTax: 6000 },
     { salary: 200000, expectedTax: 48000 },
-  ])('should throw error if salary is "%s"', (x) => {
-    const calculator = new TaxCalculator(taxTable);
-    expect(calculator.calculateTax(Big(x.salary))).toEqual(Big(x.expectedTax));
+  ])('should calculate tax if salary is "%s"', (x) => {
+    expect(calculateTax(Big(x.salary))).toEqual(Big(x.expectedTax));
   });
 });

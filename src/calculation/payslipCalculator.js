@@ -1,35 +1,28 @@
 const Big = require('big.js');
 const Payslip = require('../model/payslip');
+const { calculateTax } = require('./taxCalculator');
 
 const NUMBER_OF_MONTHS = Big(12);
 
-class PayslipCalculator {
-  constructor(taxCalculator) {
-    this.taxCalculator = taxCalculator;
-  }
+const calculatePayslip = (salary) => {
+  const bigSalary = Big(salary);
+  return new Payslip({
+    grossMonthlyIncome: grossMonthlyIncome(bigSalary).toFixed(2),
+    monthlyIncomeTax: monthlyIncomeTax(bigSalary).toFixed(2),
+    netMonthlyIncome: netMonthlyIncome(bigSalary).toFixed(2),
+  });
+};
 
-  calculatePayslip(salary) {
-    const bigSalary = Big(salary);
-    return new Payslip({
-      grossMonthlyIncome: this._grossMonthlyIncome(bigSalary).toFixed(2),
-      monthlyIncomeTax: this._monthlyIncomeTax(bigSalary).toFixed(2),
-      netMonthlyIncome: this._netMonthlyIncome(bigSalary).toFixed(2),
-    });
-  }
+const grossMonthlyIncome = (salary) => {
+  return salary.div(NUMBER_OF_MONTHS);
+};
 
-  _grossMonthlyIncome = (salary) => {
-    return salary.div(NUMBER_OF_MONTHS);
-  };
+const monthlyIncomeTax = (salary) => {
+  return calculateTax(salary).div(NUMBER_OF_MONTHS);
+};
 
-  _monthlyIncomeTax = (salary) => {
-    return this.taxCalculator.calculateTax(salary).div(NUMBER_OF_MONTHS);
-  };
+const netMonthlyIncome = (salary) => {
+  return grossMonthlyIncome(salary).minus(monthlyIncomeTax(salary));
+};
 
-  _netMonthlyIncome = (salary) => {
-    return this._grossMonthlyIncome(salary).minus(
-      this._monthlyIncomeTax(salary)
-    );
-  };
-}
-
-module.exports = PayslipCalculator;
+module.exports = { calculatePayslip };
