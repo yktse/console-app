@@ -58,3 +58,6 @@ git clone https://github.com/yktse/console-app.git
 
 ### Considerations
 It is a small application and the design is simple. Considered using Object Oriented Programming Design, but in the end chosen this approach as it is a small application and it reduces code redundancy.
+
+### Author
+Kimberley Tse
