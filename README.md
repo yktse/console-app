@@ -39,7 +39,13 @@ Big.js is a small, fast JavaScript library for arbitrary-precision decimal arith
 ## Run Application
 
 - Install Node.js
-- git clone git@github.com:yktse/console-app.git
+- Download from github
+
+```
+git clone https://github.com/yktse/console-app.git
+```
+
+- or unzip the zip file into a folder
 - npm install
 - npm link
 - GenerateMonthlyPayslip "Mary Song" 60000
