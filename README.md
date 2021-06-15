@@ -16,6 +16,7 @@ This is a simple program to calculate employees' gross monthly income, monthly i
 - The program is run on node - v12
 - The payslip represents monthly of the annual figures.
 - There is a capability to extend the change of tax bracket.
+- Name and Annual salary must be provided.
 
 ## Implemetation
 
@@ -54,3 +55,6 @@ git clone https://github.com/yktse/console-app.git
 
 - npm install
 - npm run test
+
+### Considerations
+It is a small application and the design is simple. Considered using Object Oriented Programming Design, but in the end chosen this approach as it is a small application and it reduces code redundancy.
